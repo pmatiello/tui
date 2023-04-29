@@ -2,7 +2,7 @@
 
 (def ^:private csi "\u001b[")
 
-(defn ^:private ^String ansi-seq [& code]
+(defn ^:private ansi-seq [& code]
   (apply str csi code))
 
 (defn reset []
