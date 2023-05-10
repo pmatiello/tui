@@ -42,21 +42,23 @@
   :args (s/cat :style ::specs/style)
   :ret ::specs/string)
 
-(defn ^:private +style
-  [string style]
-  (str (style->str style) string (ansi/reset)))
+(defn ^:private render*
+  [{:keys [body style reset]}]
+  (str (style->str style) body (ansi/reset)))
 
-(s/fdef +style
-  :args (s/cat :string ::specs/string
-               :style ::specs/style)
+(s/fdef render*
+  :args (s/cat :body+style ::specs/body+style)
   :ret ::specs/string)
 
 (defn render
   [text]
   (cond
-    (s/valid? ::specs/string text)
+    (s/valid? ::specs/body text)
     text
 
-    (s/valid? ::specs/style+string text)
-    (let [[style string] text]
-      (+style string style))))
+    (s/valid? ::specs/body+style text)
+    (render* text)))
+
+(s/fdef render
+  :args (s/cat :text ::specs/text)
+  :ret ::specs/string)

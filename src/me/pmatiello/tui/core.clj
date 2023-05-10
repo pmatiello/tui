@@ -4,12 +4,12 @@
             [me.pmatiello.tui.internal.rendering :as rendering]))
 
 (defn render
-  [& text]
-  (assert (s/valid? (s/* ::specs/text) text))
-  (->> text
+  [page]
+  (assert (s/valid? ::specs/page page))
+  (->> page
        (map rendering/render)
        (apply str)))
 
 (s/fdef render
-  :args (s/cat :text (s/* ::specs/text))
+  :args (s/cat :page ::specs/page)
   :ret ::specs/string)

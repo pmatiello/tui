@@ -11,4 +11,4 @@
 
   (testing "renders styled text"
     (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m"
-           (rendering/render [[:bold :fg-blue] "!styled!"])))))
+           (rendering/render {:style [:bold :fg-blue] :body "!styled!"})))))
