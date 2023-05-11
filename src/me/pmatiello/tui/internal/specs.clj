@@ -24,3 +24,8 @@
 
 (s/def ::page
   (s/coll-of ::text))
+
+(s/def ::separator ::text)
+
+(s/def ::render-opts
+  (s/keys :opt-un [::separator]))
