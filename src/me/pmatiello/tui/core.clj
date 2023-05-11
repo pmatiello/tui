@@ -3,7 +3,7 @@
             [clojure.string :as string]
             [me.pmatiello.tui.internal.specs :as specs]
             [me.pmatiello.tui.internal.rendering :as rendering])
-  (:refer-clojure :exclude [print println]))
+  (:refer-clojure :exclude [print println read-line]))
 
 (defn render
   ([page]
@@ -38,4 +38,11 @@
 
 (s/fdef println
   :args (s/cat :page (s/* ::specs/text))
+  :ret ::specs/string)
+
+(defn read-line
+  []
+  (clojure.core/read-line))
+
+(s/fdef read-line
   :ret ::specs/string)

@@ -56,3 +56,14 @@
     (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text\n"
            (with-out-str
              (tui/println {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
+
+(deftest read-line-test
+  (testing "reads line from stdin"
+    (is (= "read line"
+           (with-in-str "read line\n"
+             (tui/read-line)))))
+
+  (testing "only reads a single line"
+    (is (= "first line"
+           (with-in-str "first line\nsecond line\n"
+             (tui/read-line))))))
