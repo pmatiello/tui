@@ -19,7 +19,7 @@
            (tui/render [{:style [:bold :fg-blue] :body "!styled!"} "text"]))))
 
   (testing "validates that given styles are valid"
-    (is (thrown? AssertionError (tui/render [[[:invalid] "invalid"]]))))
+    (is (thrown? AssertionError (tui/render [{:style [:invalid] :body "invalid"}]))))
 
   (testing "renders multiple text fragments, with a custom separator"
     (is (= "plain text"
