@@ -2,7 +2,8 @@
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [me.pmatiello.tui.internal.specs :as specs]
-            [me.pmatiello.tui.internal.rendering :as rendering]))
+            [me.pmatiello.tui.internal.rendering :as rendering])
+  (:refer-clojure :exclude [print]))
 
 (defn render
   ([page]
@@ -17,4 +18,14 @@
 (s/fdef render
   :args (s/cat :page ::specs/page
                :opts (s/? ::specs/render-opts))
+  :ret ::specs/string)
+
+(defn print
+  [& page]
+  (-> page
+      (render {:separator " "})
+      clojure.core/print))
+
+(s/fdef print
+  :args (s/cat :page (s/* ::specs/text))
   :ret ::specs/string)

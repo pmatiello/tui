@@ -28,3 +28,16 @@
   (testing "renders multiple text fragments, with a custom separator, with style"
     (is (= "plain\\u001b[1m-\\u001b[0mtext"
            (tui/render ["plain" "text"] {:separator {:style [:bold] :body "-"}})))))
+
+(deftest print-test
+  (testing "renders plain text"
+    (is (= "plain text"
+           (with-out-str (tui/print "plain text")))))
+
+  (testing "concatenates multiple text fragments, space-separated"
+    (is (= "plain text"
+           (with-out-str (tui/print "plain" "text")))))
+
+  (testing "renders styled text"
+    (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text"
+           (with-out-str (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
