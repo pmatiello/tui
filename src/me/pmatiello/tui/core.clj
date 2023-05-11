@@ -3,7 +3,7 @@
             [clojure.string :as string]
             [me.pmatiello.tui.internal.specs :as specs]
             [me.pmatiello.tui.internal.rendering :as rendering])
-  (:refer-clojure :exclude [print]))
+  (:refer-clojure :exclude [print println]))
 
 (defn render
   ([page]
@@ -27,5 +27,15 @@
       clojure.core/print))
 
 (s/fdef print
+  :args (s/cat :page (s/* ::specs/text))
+  :ret ::specs/string)
+
+(defn println
+  [& page]
+  (-> page
+      (render {:separator " "})
+      clojure.core/println))
+
+(s/fdef println
   :args (s/cat :page (s/* ::specs/text))
   :ret ::specs/string)

@@ -30,14 +30,29 @@
            (tui/render ["plain" "text"] {:separator {:style [:bold] :body "-"}})))))
 
 (deftest print-test
-  (testing "renders plain text"
+  (testing "prints plain text"
     (is (= "plain text"
            (with-out-str (tui/print "plain text")))))
 
-  (testing "concatenates multiple text fragments, space-separated"
+  (testing "prints multiple text fragments separated by space"
     (is (= "plain text"
            (with-out-str (tui/print "plain" "text")))))
 
-  (testing "renders styled text"
+  (testing "prints styled text"
     (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text"
-           (with-out-str (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
+           (with-out-str
+             (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
+
+(deftest println-test
+  (testing "prints plain text, followed by newline"
+    (is (= "plain text\n"
+           (with-out-str (tui/println "plain text")))))
+
+  (testing "prints multiple text fragments separated by space"
+    (is (= "plain text\n"
+           (with-out-str (tui/println "plain" "text")))))
+
+  (testing "prints styled text"
+    (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text\n"
+           (with-out-str
+             (tui/println {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
