@@ -1,7 +1,7 @@
 (ns me.pmatiello.tui.internal.ansi-test
   (:require [clojure.test :refer :all]
-            [me.pmatiello.tui.internal.ansi :as ansi]
-            [me.pmatiello.tui.fixtures :as fixtures]))
+            [me.pmatiello.tui.fixtures :as fixtures]
+            [me.pmatiello.tui.internal.ansi :as ansi]))
 
 (use-fixtures :each fixtures/with-readable-csi)
 

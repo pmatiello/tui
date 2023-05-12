@@ -1,9 +1,9 @@
 (ns me.pmatiello.tui.core
+  (:refer-clojure :exclude [print println read-line])
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as string]
-            [me.pmatiello.tui.internal.specs :as specs]
-            [me.pmatiello.tui.internal.rendering :as rendering])
-  (:refer-clojure :exclude [print println read-line])
+            [me.pmatiello.tui.internal.rendering :as rendering]
+            [me.pmatiello.tui.internal.specs :as specs])
   (:import (java.io BufferedReader)))
 
 (defn render

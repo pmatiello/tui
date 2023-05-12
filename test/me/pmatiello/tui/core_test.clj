@@ -1,8 +1,7 @@
 (ns me.pmatiello.tui.core-test
   (:require [clojure.test :refer :all]
             [me.pmatiello.tui.core :as tui]
-            [me.pmatiello.tui.fixtures :as fixtures])
-  (:import (java.io PushbackReader StringReader)))
+            [me.pmatiello.tui.fixtures :as fixtures]))
 
 (use-fixtures :each fixtures/with-readable-csi)
 
