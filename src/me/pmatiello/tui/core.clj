@@ -1,4 +1,6 @@
-(ns me.pmatiello.tui.core
+(ns
+  ^{:doc "Functions for terminal user interfaces."}
+  me.pmatiello.tui.core
   (:refer-clojure :exclude [print println read-line])
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as string]
@@ -7,6 +9,11 @@
   (:import (java.io BufferedReader)))
 
 (defn render
+  "Renders a page (as a string).
+
+  Arguments:
+  - page [me.pmatiello.tui.internal.specs/page]
+  - opts [:me.pmatiello.tui.internal.specs/render-opts, optional]"
   ([page]
    (render page {:separator ""}))
   ([page {:keys [separator]}]
@@ -22,6 +29,10 @@
   :ret ::specs/string)
 
 (defn print
+  "Prints a page to stdout.
+
+  Arguments:
+  - page [me.pmatiello.tui.internal.specs/page, variadic]"
   [& page]
   (-> page
       (render {:separator " "})
@@ -32,6 +43,10 @@
   :ret ::specs/string)
 
 (defn println
+  "Prints a page to stdout. Add a new line at the end.
+
+  Arguments:
+  - page [me.pmatiello.tui.internal.specs/page, variadic]"
   [& page]
   (-> page
       (render {:separator " "})
@@ -42,13 +57,16 @@
   :ret ::specs/string)
 
 (defn read-line
+  "Reads a single line from *in*."
   []
   (clojure.core/read-line))
 
 (s/fdef read-line
   :ret ::specs/string)
 
-(defn read-lines []
+(defn read-lines
+  "Reads lines from *in* until EOF."
+  []
   (let [buffered-reader (BufferedReader. *in*)]
     (doall (line-seq buffered-reader))))
 

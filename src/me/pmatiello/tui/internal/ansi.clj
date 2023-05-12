@@ -1,4 +1,4 @@
-(ns me.pmatiello.tui.internal.ansi)
+(ns ^:no-doc me.pmatiello.tui.internal.ansi)
 
 (def ^:private csi "\u001b[")
 

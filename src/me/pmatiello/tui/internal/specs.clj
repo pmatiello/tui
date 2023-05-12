@@ -1,4 +1,4 @@
-(ns me.pmatiello.tui.internal.specs
+(ns ^:no-doc me.pmatiello.tui.internal.specs
   (:require [clojure.spec.alpha :as s]))
 
 (def ^:private style*?

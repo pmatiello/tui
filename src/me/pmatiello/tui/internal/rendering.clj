@@ -1,4 +1,4 @@
-(ns me.pmatiello.tui.internal.rendering
+(ns ^:no-doc me.pmatiello.tui.internal.rendering
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [me.pmatiello.tui.internal.ansi :as ansi]
