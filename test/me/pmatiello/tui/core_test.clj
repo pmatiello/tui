@@ -1,7 +1,8 @@
 (ns me.pmatiello.tui.core-test
   (:require [clojure.test :refer :all]
             [me.pmatiello.tui.core :as tui]
-            [me.pmatiello.tui.fixtures :as fixtures]))
+            [me.pmatiello.tui.fixtures :as fixtures])
+  (:import (java.io PushbackReader StringReader)))
 
 (use-fixtures :each fixtures/with-readable-csi)
 
@@ -60,10 +61,16 @@
 (deftest read-line-test
   (testing "reads line from stdin"
     (is (= "read line"
-           (with-in-str "read line\n"
+           (with-in-str "read line"
              (tui/read-line)))))
 
   (testing "only reads a single line"
     (is (= "first line"
-           (with-in-str "first line\nsecond line\n"
+           (with-in-str "first line\nsecond line"
              (tui/read-line))))))
+
+(deftest read-lines-test
+  (testing "reads lines from stdin until eof"
+    (is (= ["first line" "second line"]
+           (with-in-str "first line\nsecond line\n"
+             (tui/read-lines))))))

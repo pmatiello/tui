@@ -3,7 +3,8 @@
             [clojure.string :as string]
             [me.pmatiello.tui.internal.specs :as specs]
             [me.pmatiello.tui.internal.rendering :as rendering])
-  (:refer-clojure :exclude [print println read-line]))
+  (:refer-clojure :exclude [print println read-line])
+  (:import (java.io BufferedReader)))
 
 (defn render
   ([page]
@@ -46,3 +47,10 @@
 
 (s/fdef read-line
   :ret ::specs/string)
+
+(defn read-lines []
+  (let [buffered-reader (BufferedReader. *in*)]
+    (doall (line-seq buffered-reader))))
+
+(s/fdef read-lines
+  :ret (s/coll-of ::specs/string))
