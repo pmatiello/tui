@@ -13,7 +13,14 @@
 
   Arguments:
   - page [me.pmatiello.tui.internal.specs/page]
-  - opts [:me.pmatiello.tui.internal.specs/render-opts, optional]"
+  - opts [:me.pmatiello.tui.internal.specs/render-opts, optional]
+
+  Examples:
+  - (render [\"plain text\"])
+  - (render [\"plain\", \" \", \"text\"])
+  - (render [{:style [:bold :fg-blue] :body \"!styled!\"} \"text\"])
+  - (render [\"plain\", \"text\"] {:separator \" \"})
+  - (render [\"plain\", \"text\"] {:separator {:style [:bold] :body \"-\"}})"
   ([page]
    (render page {:separator ""}))
   ([page {:keys [separator]}]
@@ -32,7 +39,12 @@
   "Prints a page to stdout.
 
   Arguments:
-  - page [me.pmatiello.tui.internal.specs/page, variadic]"
+  - page [me.pmatiello.tui.internal.specs/page, variadic]
+
+  Examples:
+  - (print \"plain text\")
+  - (print \"plain\" \"text\")
+  - (print {:style [:bold :fg-blue] :body \"!styled!\"} \"text\")"
   [& page]
   (-> page
       (render {:separator " "})
@@ -46,7 +58,12 @@
   "Prints a page to stdout. Add a new line at the end.
 
   Arguments:
-  - page [me.pmatiello.tui.internal.specs/page, variadic]"
+  - page [me.pmatiello.tui.internal.specs/page, variadic]
+
+  Examples:
+  - (println \"plain text\")
+  - (println \"plain\" \"text\")
+  - (println {:style [:bold :fg-blue] :body \"!styled!\"} \"text\")"
   [& page]
   (-> page
       (render {:separator " "})
