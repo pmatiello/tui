@@ -3,6 +3,14 @@
 This library provides functions for simple terminal user interfaces in Clojure. It 
 offers functions for rendering styled text, printing to stdout and reading from stdin.
 
+## Usage
+
+This library is available on the [clojars](https://clojars.org) repository. Refer to
+the link in the image below for instructions on how to add it as a dependency to a
+Clojure project.
+
+[![Clojars Project](https://img.shields.io/clojars/v/me.pmatiello/tui.svg)](https://clojars.org/me.pmatiello/tui)
+
 ## Development
 
 Information for developing this library.
