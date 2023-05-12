@@ -28,3 +28,7 @@ To clean a previous build, run:
 ```
 % clj -T:build clean
 ```
+
+## Contribution Policy
+
+This software is open-source, but closed to contributions.
