@@ -14,3 +14,17 @@ The following command will execute the unit tests:
 ```
 % clj -X:test
 ```
+
+### Building
+
+The following command will build a jar file:
+
+```
+% clj -T:build jar
+```
+
+To clean a previous build, run:
+
+```
+% clj -T:build clean
+```
