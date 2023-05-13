@@ -18,7 +18,10 @@ refer to the docstrings and specs of these functions for usage details and examp
 
 ```clj
 (require '[me.pmatiello.tui.core :as tui])
-(tui/println "hello world!") ; => prints "hello world!"
+
+; print "hello world!" in bold blue text
+(tui/println {:style [:bold :fg-blue]
+              :body  "hello world!"})
 ```
 
 ### Pages
