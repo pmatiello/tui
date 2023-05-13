@@ -74,7 +74,7 @@
   :ret ::specs/string)
 
 (defn read-line
-  "Reads a single line from *in*."
+  "Reads a single line from stdin."
   []
   (clojure.core/read-line))
 
@@ -82,7 +82,7 @@
   :ret ::specs/string)
 
 (defn read-lines
-  "Reads lines from *in* until EOF."
+  "Reads lines from stdin until EOF."
   []
   (let [buffered-reader (BufferedReader. *in*)]
     (doall (line-seq buffered-reader))))
