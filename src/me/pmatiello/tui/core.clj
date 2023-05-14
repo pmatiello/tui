@@ -52,7 +52,7 @@
 
 (s/fdef print
   :args (s/cat :page (s/* ::specs/text))
-  :ret ::specs/string)
+  :ret nil?)
 
 (defn println
   "Prints a page to stdout. Add a new line at the end.
@@ -71,7 +71,7 @@
 
 (s/fdef println
   :args (s/cat :page (s/* ::specs/text))
-  :ret ::specs/string)
+  :ret nil?)
 
 (defn read-line
   "Reads a single line from stdin."
