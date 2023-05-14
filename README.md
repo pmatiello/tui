@@ -11,17 +11,51 @@ Clojure project.
 
 [![Clojars Project](https://img.shields.io/clojars/v/me.pmatiello/tui.svg)](https://clojars.org/me.pmatiello/tui)
 
-The public functions are located in the `me.pmatiello.tui.core` namespace. Please
-refer to the docstrings and specs of these functions for usage details and examples.
+The public functions are located in the `me.pmatiello.tui.core` namespace. Refer to
+the docstrings and specs of these functions for usage details and examples.
 
-### Example
+### Examples
+
+Import the `me.pmatiello.tui.core` namespace to use the provided functions.
 
 ```clj
 (require '[me.pmatiello.tui.core :as tui])
+```
 
-; print "hello world!" in bold blue text
-(tui/println {:style [:bold :fg-blue]
-              :body  "hello world!"})
+Rendering a page as a string:
+
+```clj
+(tui/render ["plain" " "  "text"]) 
+; returns "plain text"
+```
+
+```clj
+(tui/render [{:style [:bold] :body "styled"} " " {:style [:bold] :body "text"}])
+; returns "styled text", in bold
+```
+
+Printing to stdout:
+
+```clj
+(tui/print "plain" "text")
+; prints "plain text", doesn't add a line break
+```
+
+```clj
+(tui/println {:style [:bold] :body "styled"} {:style [:bold] :body "text"})
+; prints "styled text", in bold, adds a line break
+```
+
+Reading from stdin:
+
+```clj
+(tui/read-line)
+; reads one line from stdin and return it
+```
+
+```clj
+(tui/read-lines)
+; reads lines from stdin until EOF (ctrl+D) and return them
 ```
 
 ### Pages
