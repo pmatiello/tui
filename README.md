@@ -50,12 +50,12 @@ Reading from stdin:
 
 ```clj
 (tui/read-line)
-; reads one line from stdin and return it
+; reads one line from stdin and returns it
 ```
 
 ```clj
 (tui/read-lines)
-; reads lines from stdin until EOF (ctrl+D) and return them
+; reads lines from stdin until EOF (ctrl+D) and returns them
 ```
 
 ### Pages
