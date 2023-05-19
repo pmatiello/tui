@@ -48,7 +48,8 @@
   [& page]
   (-> page
       (render {:separator " "})
-      clojure.core/print))
+      clojure.core/print)
+  (flush))
 
 (s/fdef print
   :args (s/cat :page (s/* ::specs/text))
@@ -67,7 +68,8 @@
   [& page]
   (-> page
       (render {:separator " "})
-      clojure.core/println))
+      clojure.core/println)
+  (flush))
 
 (s/fdef println
   :args (s/cat :page (s/* ::specs/text))
