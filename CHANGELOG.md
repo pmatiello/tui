@@ -2,6 +2,10 @@
 
 Notable changes to this project are documented in this file.
 
+## v0.1.3
+**Released at:** 2023-05-19.
+- Fixes changelog formatting.
+
 ## v0.1.2
 **Released at:** 2023-05-19.
 - Always flush stdout after printing.
