@@ -1,7 +1,7 @@
 (ns
   ^{:doc "Functions for terminal user interfaces."}
   me.pmatiello.tui.core
-  (:refer-clojure :exclude [print println read-line])
+  (:refer-clojure :exclude [flush print println read-line])
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [me.pmatiello.tui.internal.rendering :as rendering]
@@ -68,6 +68,11 @@
   (-> page
       (render {:separator " "})
       clojure.core/println))
+
+(defn flush
+  "Flushes stdout."
+  []
+  (clojure.core/flush))
 
 (s/fdef println
   :args (s/cat :page (s/* ::specs/text))

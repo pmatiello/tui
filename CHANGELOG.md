@@ -4,6 +4,7 @@ Notable changes to this project are documented in this file.
 
 ## Unreleased
 - Makes printing functions no longer explicitly flush stdout.
+- Adds the `tui.core/flush` function for explicitly flushing stdout.
 
 ## v0.1.3
 **Released at:** 2023-05-19.
