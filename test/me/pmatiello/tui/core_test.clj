@@ -6,6 +6,10 @@
 (use-fixtures :each fixtures/with-readable-csi)
 
 (deftest render-test
+  (testing "renders a character"
+    (is (= "A"
+           (tui/render [\A]))))
+
   (testing "renders plain text"
     (is (= "plain text"
            (tui/render ["plain text"]))))
@@ -30,6 +34,10 @@
            (tui/render ["plain" "text"] {:separator {:style [:bold] :body "-"}})))))
 
 (deftest print-test
+  (testing "prints a character"
+    (is (= "A"
+           (with-out-str (tui/print \A)))))
+
   (testing "prints plain text"
     (is (= "plain text"
            (with-out-str (tui/print "plain text")))))
@@ -44,6 +52,10 @@
              (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
 
 (deftest println-test
+  (testing "prints a character, followed by newline"
+    (is (= "A\n"
+           (with-out-str (tui/println \A)))))
+
   (testing "prints plain text, followed by newline"
     (is (= "plain text\n"
            (with-out-str (tui/println "plain text")))))

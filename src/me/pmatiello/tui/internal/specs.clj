@@ -8,7 +8,8 @@
     :fg-blue :fg-purple :fg-cyan :fg-white :fg-default :bg-black :bg-red :bg-green
     :bg-yellow :bg-blue :bg-purple :bg-cyan :bg-white :bg-default})
 
-(s/def ::body string?)
+(s/def ::body
+  (s/or :char char? :string string?))
 (s/def ::string string?)
 (s/def ::style* style*?)
 
