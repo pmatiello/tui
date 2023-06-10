@@ -2,9 +2,10 @@
 
 Notable changes to this project are documented in this file.
 
-## Unreleased
+## v0.2.0
+**Released at:** 2023-06-10.
 - Makes printing functions no longer explicitly flush stdout.
-- Makes printing functions print individual characters.
+- Makes printing functions print individual character instances.
 - Makes printing functions also work in the absence of arguments.
 - Adds the `tui.core/flush` function for explicitly flushing stdout.
 
