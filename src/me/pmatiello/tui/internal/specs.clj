@@ -24,7 +24,7 @@
         :body+style ::body+style))
 
 (s/def ::page
-  (s/coll-of ::text))
+  (-> (s/coll-of ::text) (s/nilable)))
 
 (s/def ::separator ::text)
 

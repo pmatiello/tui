@@ -31,7 +31,11 @@
 
   (testing "renders multiple text fragments, with a custom separator, with style"
     (is (= "plain\\u001b[1m-\\u001b[0mtext"
-           (tui/render ["plain" "text"] {:separator {:style [:bold] :body "-"}})))))
+           (tui/render ["plain" "text"] {:separator {:style [:bold] :body "-"}}))))
+
+  (testing "renders empty sequences as an empty string"
+    (is (= "" (tui/render nil)))
+    (is (= "" (tui/render [])))))
 
 (deftest print-test
   (testing "prints a character"
@@ -49,7 +53,10 @@
   (testing "prints styled text"
     (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text"
            (with-out-str
-             (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
+             (tui/print {:style [:bold :fg-blue] :body "!styled!"} "text")))))
+
+  (testing "prints no text when no arguments are passed"
+    (is (= "" (with-out-str (tui/print))))))
 
 (deftest println-test
   (testing "prints a character, followed by newline"
@@ -67,7 +74,10 @@
   (testing "prints styled text"
     (is (= "\\u001b[1m\\u001b[34m!styled!\\u001b[0m text\n"
            (with-out-str
-             (tui/println {:style [:bold :fg-blue] :body "!styled!"} "text"))))))
+             (tui/println {:style [:bold :fg-blue] :body "!styled!"} "text")))))
+
+  (testing "prints just a newline when no arguments are passed"
+    (is (= "\n" (with-out-str (tui/println))))))
 
 (deftest read-line-test
   (testing "reads line from stdin"
