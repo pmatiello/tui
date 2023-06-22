@@ -25,7 +25,7 @@ Import the `me.pmatiello.tui.core` namespace to use the provided functions.
 Rendering a page as a string:
 
 ```clj
-(tui/render ["plain" " "  "text"]) 
+(tui/render ["plain" " " "text"]) 
 ; returns "plain text"
 ```
 
